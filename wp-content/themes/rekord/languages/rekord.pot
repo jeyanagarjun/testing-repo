@@ -1,0 +1,1048 @@
+# Copyright (C) 2019 xvelopers
+# This file is distributed under the GNU General Public License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Rekord 1.3.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/rekord\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-07-23T18:31:12+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0\n"
+"X-Domain: rekord\n"
+
+#. Theme Name of the theme
+msgid "Rekord"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "http://xvelopers.com"
+msgstr ""
+
+#. Description of the theme
+msgid "Music & Events Theme"
+msgstr ""
+
+#. Author of the theme
+msgid "xvelopers"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://themeforest.net/user/xvelopers"
+msgstr ""
+
+#. translators: 1: reviews count 2: product name
+#: woocommerce/single-product-reviews.php:34
+msgid "%1$s review for %2$s"
+msgid_plural "%1$s reviews for %2$s"
+msgstr[0] ""
+
+#: woocommerce/single-product-reviews.php:36
+msgid "Reviews"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:58
+msgid "There are no reviews yet."
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:71
+msgid "Add a review"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:71
+msgid "Be the first to review &ldquo;%s&rdquo;"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:72
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:77
+#: comments.php:34
+msgid "Name"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:79
+#: comments.php:45
+msgid "Email"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:82
+#: inc/template-tags.php:209
+msgid "Submit"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:88
+msgid "You must be <a href=\"%s\">logged in</a> to post a review."
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:92
+msgid "Your rating"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:93
+msgid "Rate&hellip;"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:94
+msgid "Perfect"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:95
+msgid "Good"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:96
+msgid "Average"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:97
+msgid "Not that bad"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:98
+msgid "Very poor"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:102
+msgid "Your review"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:112
+msgid "Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:26
+msgid "Have a coupon?"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:26
+msgid "Click here to enter your code"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:31
+msgid "If you have a coupon code, please apply it below."
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:35
+#: woocommerce/cart/cart.php:140
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:40
+#: woocommerce/cart/cart.php:143
+msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:30
+#: woocommerce/cart/cart.php:75
+msgid "Product"
+msgstr ""
+
+#: woocommerce/cart/cart.php:31
+#: woocommerce/cart/cart.php:95
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:32
+#: woocommerce/cart/cart.php:101
+#: woocommerce/global/quantity-input.php:34
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:33
+#: woocommerce/cart/cart.php:119
+msgid "Total"
+msgstr ""
+
+#: woocommerce/cart/cart.php:56
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/cart/cart.php:90
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:138
+msgid "Coupon:"
+msgstr ""
+
+#: woocommerce/cart/cart.php:149
+msgid "Update cart"
+msgstr ""
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:29
+msgid "%s quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:39
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: 404.php:15
+#: templates/favourites/favourites-none.php:12
+msgid "oops!"
+msgstr ""
+
+#: 404.php:17
+msgid "Something went wrong. The page you are looking for is gone"
+msgstr ""
+
+#: 404.php:19
+msgid "404!"
+msgstr ""
+
+#: inc/auth.php:19
+msgid "Sending user info, please wait..."
+msgstr ""
+
+#: inc/auth.php:50
+msgid "Wrong username or password."
+msgstr ""
+
+#: inc/auth.php:53
+msgid "Login successful, redirecting..."
+msgstr ""
+
+#: inc/customizer.php:59
+msgid "Theme Skin"
+msgstr ""
+
+#: inc/customizer.php:60
+msgid "Select a dark or light theme skin"
+msgstr ""
+
+#: inc/customizer.php:72
+msgid "Skin Control for visitors"
+msgstr ""
+
+#: inc/customizer.php:73
+msgid "Allow visitors to change theme skin to light or dark (beta)"
+msgstr ""
+
+#: inc/customizer.php:78
+#: inc/customizer.php:173
+#: inc/customizer.php:186
+#: inc/customizer.php:220
+#: inc/customizer.php:233
+#: inc/customizer.php:246
+#: inc/customizer.php:266
+#: inc/customizer.php:402
+#: inc/customizer.php:426
+msgid "Enable"
+msgstr ""
+
+#: inc/customizer.php:79
+#: inc/customizer.php:174
+#: inc/customizer.php:187
+#: inc/customizer.php:221
+#: inc/customizer.php:234
+#: inc/customizer.php:247
+#: inc/customizer.php:267
+#: inc/customizer.php:403
+#: inc/customizer.php:427
+msgid "Disable"
+msgstr ""
+
+#: inc/customizer.php:86
+msgid "Primary Color"
+msgstr ""
+
+#: inc/customizer.php:123
+msgid "Accent Color"
+msgstr ""
+
+#: inc/customizer.php:148
+msgid "Theme Font"
+msgstr ""
+
+#: inc/customizer.php:168
+msgid "Enable RTL"
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Bar On Top"
+msgstr ""
+
+#: inc/customizer.php:197
+msgid "Google Map API"
+msgstr ""
+
+#: inc/customizer.php:214
+msgid "Player"
+msgstr ""
+
+#: inc/customizer.php:215
+msgid "If you are using site of other purposes you can disable player."
+msgstr ""
+
+#: inc/customizer.php:228
+msgid "Auto Play"
+msgstr ""
+
+#: inc/customizer.php:241
+msgid "Volume Control"
+msgstr ""
+
+#: inc/customizer.php:260
+msgid "Ajaxify"
+msgstr ""
+
+#: inc/customizer.php:261
+msgid "Make site ajaxify. If you are using plugins. You may need to recall scripts."
+msgstr ""
+
+#: inc/customizer.php:273
+msgid "Ajax Callback"
+msgstr ""
+
+#: inc/customizer.php:274
+msgid "Add ajax callback here"
+msgstr ""
+
+#: inc/customizer.php:289
+msgid "Share Icons"
+msgstr ""
+
+#: inc/customizer.php:295
+msgid "Facebook"
+msgstr ""
+
+#: inc/customizer.php:296
+msgid "Twitter"
+msgstr ""
+
+#: inc/customizer.php:297
+msgid "WhatsApp"
+msgstr ""
+
+#: inc/customizer.php:298
+msgid "email"
+msgstr ""
+
+#: inc/customizer.php:305
+msgid "Facebook API"
+msgstr ""
+
+#: inc/customizer.php:319
+msgid "Select Favourites Page"
+msgstr ""
+
+#: inc/customizer.php:327
+#: inc/customizer.php:517
+msgid "Favourites"
+msgstr ""
+
+#: inc/customizer.php:333
+msgid "Tracks"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/customizer.php:334
+#: inc/acf.php:1441
+msgid "Albums"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/customizer.php:335
+msgid "Videos"
+msgstr ""
+
+#: inc/customizer.php:336
+#: inc/acf.php:993
+#: single-track.php:100
+msgid "Artists"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/customizer.php:337
+msgid "Events"
+msgstr ""
+
+#: inc/customizer.php:338
+msgid "Posts"
+msgstr ""
+
+#: inc/customizer.php:350
+#: inc/acf.php:1743
+msgid "Title"
+msgstr ""
+
+#: inc/customizer.php:358
+msgid "Subtitle"
+msgstr ""
+
+#: inc/customizer.php:365
+msgid "Playlist Categories"
+msgstr ""
+
+#: inc/customizer.php:377
+msgid "Number of Tracks"
+msgstr ""
+
+#: inc/customizer.php:396
+msgid "Frontend Login"
+msgstr ""
+
+#: inc/customizer.php:397
+msgid "Allow users to login from frontend."
+msgstr ""
+
+#: inc/customizer.php:410
+msgid "Frontend User Register Page"
+msgstr ""
+
+#: inc/customizer.php:420
+msgid "Track Uploads "
+msgstr ""
+
+#: inc/customizer.php:421
+msgid "Allow Register Users to upload tracks."
+msgstr ""
+
+#: inc/customizer.php:434
+msgid "Select Page for User Tracks"
+msgstr ""
+
+#: inc/customizer.php:443
+msgid "Select Page for Track Create"
+msgstr ""
+
+#: inc/customizer.php:473
+msgid "Rekord Settings"
+msgstr ""
+
+#: inc/customizer.php:474
+msgid "This panel will provide all the options of the header."
+msgstr ""
+
+#: inc/customizer.php:483
+msgid "Gernal Settings"
+msgstr ""
+
+#: inc/customizer.php:491
+msgid "Ajax Settings"
+msgstr ""
+
+#: inc/customizer.php:499
+msgid "Player Settings"
+msgstr ""
+
+#: inc/customizer.php:509
+msgid "Social"
+msgstr ""
+
+#: inc/customizer.php:510
+msgid "Social Icons."
+msgstr ""
+
+#: inc/customizer.php:525
+msgid "Playlist Sidebar"
+msgstr ""
+
+#: inc/customizer.php:534
+msgid "Frontend Options"
+msgstr ""
+
+#: inc/acf.php:465
+msgid "About Album"
+msgstr ""
+
+#: inc/acf.php:481
+#: inc/acf.php:718
+msgid "Short Summery"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/acf.php:500
+msgid "Artist"
+msgstr ""
+
+#: inc/acf.php:516
+msgid "Select Artist"
+msgstr ""
+
+#: inc/acf.php:538
+msgid "Buttons"
+msgstr ""
+
+#: inc/acf.php:554
+#: inc/acf.php:1015
+#: inc/acf.php:1031
+#: inc/acf.php:1463
+#: inc/acf.php:1479
+msgid "Button"
+msgstr ""
+
+#: inc/acf.php:566
+#: inc/acf.php:1043
+#: inc/acf.php:1491
+msgid "Custom Button"
+msgstr ""
+
+#: inc/acf.php:567
+#: inc/acf.php:1044
+#: inc/acf.php:1492
+msgid "Link To WooCommerce"
+msgstr ""
+
+#: inc/acf.php:578
+#: inc/acf.php:1055
+#: inc/acf.php:1503
+msgid "Button Label"
+msgstr ""
+
+#: inc/acf.php:605
+#: inc/acf.php:1530
+msgid "Button URL"
+msgstr ""
+
+#: inc/acf.php:629
+msgid "Add to Cart Button"
+msgstr ""
+
+#: inc/acf.php:632
+msgid "Select Woocommerce product to link. It will replace above buy button option"
+msgstr ""
+
+#: inc/acf.php:683
+msgid "Basic"
+msgstr ""
+
+#: inc/acf.php:699
+msgid "Designation"
+msgstr ""
+
+#: inc/acf.php:737
+#: inc/acf.php:1403
+msgid "Relations"
+msgstr ""
+
+#: inc/acf.php:753
+msgid "Show Artist Tracks"
+msgstr ""
+
+#: inc/acf.php:772
+msgid "Show Artist Albums"
+msgstr ""
+
+#: inc/acf.php:815
+#: inc/acf.php:1862
+msgid "Cover Image"
+msgstr ""
+
+#: inc/acf.php:877
+msgid "Event Details"
+msgstr ""
+
+#: inc/acf.php:893
+msgid "Start Date"
+msgstr ""
+
+#: inc/acf.php:910
+msgid "End Date"
+msgstr ""
+
+#: inc/acf.php:927
+msgid "Start Time"
+msgstr ""
+
+#: inc/acf.php:943
+msgid "End Time"
+msgstr ""
+
+#: inc/acf.php:959
+msgid "Location"
+msgstr ""
+
+#: inc/acf.php:977
+msgid "Performer"
+msgstr ""
+
+#: inc/acf.php:1082
+msgid "Button Url"
+msgstr ""
+
+#: inc/acf.php:1106
+msgid "Link To Woo"
+msgstr ""
+
+#: inc/acf.php:1157
+msgid "Cover"
+msgstr ""
+
+#: inc/acf.php:1205
+msgid "Icon"
+msgstr ""
+
+#: inc/acf.php:1253
+#: inc/acf.php:1269
+msgid "Track"
+msgstr ""
+
+#: inc/acf.php:1281
+#: templates/user/track-create.php:32
+#: templates/user/track-create-btn.php:3
+msgid "Upload Track"
+msgstr ""
+
+#: inc/acf.php:1282
+msgid "From URL"
+msgstr ""
+
+#: inc/acf.php:1293
+#: inc/acf.php:1803
+msgid "Track Upload"
+msgstr ""
+
+#: inc/acf.php:1320
+msgid "Track Wave"
+msgstr ""
+
+#: inc/acf.php:1323
+msgid ""
+"You can use the <a href=\"https://github.com/bbcrd/audiowaveform\">audiowaveform</a> program to generate track waves.\n"
+"\tGenerate wave using following command:\n"
+"\taudiowaveform -i some-file.mp3 --pixels-per-second 10 -b 8 -o some-file.json"
+msgstr ""
+
+#: inc/acf.php:1341
+msgid "URL"
+msgstr ""
+
+#: inc/acf.php:1365
+msgid "Allow Download"
+msgstr ""
+
+#: inc/acf.php:1384
+#: inc/acf.php:1822
+msgid "Track Time"
+msgstr ""
+
+#: inc/acf.php:1419
+msgid "Track Artists"
+msgstr ""
+
+#: inc/acf.php:1444
+msgid "Select the albums for this track. Please make sure you have added albums."
+msgstr ""
+
+#: inc/acf.php:1554
+msgid "Add To Cart Button"
+msgstr ""
+
+#: inc/acf.php:1557
+msgid "Link to Woocommerce product."
+msgstr ""
+
+#: inc/acf.php:1610
+msgid "Video"
+msgstr ""
+
+#: inc/acf.php:1650
+msgid "Podcast"
+msgstr ""
+
+#: inc/acf.php:1677
+msgid "Episode"
+msgstr ""
+
+#: inc/acf.php:1696
+msgid "Date"
+msgstr ""
+
+#: inc/acf.php:1762
+msgid "Description / Lyrics"
+msgstr ""
+
+#: inc/acf.php:1781
+msgid "Select Category"
+msgstr ""
+
+#: inc/acf.php:1838
+msgid "Track Thumbnail"
+msgstr ""
+
+#: inc/xv-core.php:145
+#: inc/xv-core.php:392
+msgid "Home"
+msgstr ""
+
+#: inc/xv-core.php:165
+msgid "Archive by category \""
+msgstr ""
+
+#: inc/xv-core.php:219
+msgid "Search results for \""
+msgstr ""
+
+#: inc/xv-core.php:221
+msgid "Posts tagged \""
+msgstr ""
+
+#: inc/xv-core.php:225
+msgid "Articles posted by "
+msgstr ""
+
+#: inc/xv-core.php:227
+msgid "Error 404"
+msgstr ""
+
+#: inc/xv-core.php:257
+msgid "No Image"
+msgstr ""
+
+#: inc/xv-core.php:289
+#: templates/gallery/gallery-filter.php:12
+msgid "All"
+msgstr ""
+
+#: inc/xv-core.php:393
+msgid "a Blog page"
+msgstr ""
+
+#: inc/xv-core.php:394
+msgid "Level 1"
+msgstr ""
+
+#: inc/xv-core.php:395
+msgid "About The Tests"
+msgstr ""
+
+#: inc/xv-core.php:396
+msgid "Front Page"
+msgstr ""
+
+#: inc/xv-core.php:397
+msgid "Page A"
+msgstr ""
+
+#: inc/template-tags.php:34
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:38
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: inc/template-tags.php:39
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#: inc/template-tags.php:45
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: inc/template-tags.php:50
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/template-tags.php:94
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:143
+msgid "<span class=\"posted-on\">Posted on %1$s</span><span class=\"byline\"> by %2$s</span>"
+msgstr ""
+
+#: inc/template-tags.php:203
+msgid "This content is password protected. To view it please enter your password below"
+msgstr ""
+
+#: inc/template-tags.php:206
+msgid "PASSWORD:"
+msgstr ""
+
+#: index.php:19
+#: index.php:30
+msgid "BLOG"
+msgstr ""
+
+#: comments.php:24
+msgid "Reply"
+msgstr ""
+
+#: comments.php:27
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:56
+msgid "Website"
+msgstr ""
+
+#: comments.php:69
+msgid "Write Something..."
+msgstr ""
+
+#: comments.php:87
+#: templates/blog/content-standard.php:31
+#: templates/blog/content-video.php:29
+msgctxt "comments title"
+msgid "1 Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+
+#: comments.php:114
+msgid "Comments are closed."
+msgstr ""
+
+#: search.php:19
+msgid "Search"
+msgstr ""
+
+#: search.php:21
+msgid "Search Results for: %s"
+msgstr ""
+
+#: single-track.php:110
+msgid "Description"
+msgstr ""
+
+#: single-track.php:120
+msgid "Comments"
+msgstr ""
+
+#: functions/sidebars.php:21
+msgid "Sidebar"
+msgstr ""
+
+#: functions/theme-support.php:61
+msgid "Main Menu"
+msgstr ""
+
+#: functions/theme-support.php:62
+msgid "User Menu"
+msgstr ""
+
+#: functions/config-import.php:20
+msgid "After you import this demo, you will have to setup the slider separately."
+msgstr ""
+
+#: templates/track/track-actions.php:51
+msgid "Are you sure you want to delete this?"
+msgstr ""
+
+#: templates/track/track-actions.php:72
+msgid "Pending"
+msgstr ""
+
+#: templates/track/track-artists.php:14
+msgid "%s More"
+msgstr ""
+
+#: templates/auth/form-login.php:7
+msgid "Username"
+msgstr ""
+
+#: templates/auth/form-login.php:13
+msgid "Password"
+msgstr ""
+
+#: templates/auth/form-login.php:19
+msgid "Login"
+msgstr ""
+
+#: templates/auth/form-login.php:24
+msgid "Lost your password?"
+msgstr ""
+
+#: templates/auth/form-login.php:28
+msgid "Creat An Account?"
+msgstr ""
+
+#: templates/auth/not-login.php:1
+msgid "Login to Continue"
+msgstr ""
+
+#: templates/auth/not-login.php:2
+msgid "You must login in order to see content of this page."
+msgstr ""
+
+#: templates/auth/not-login.php:5
+msgid "Login Now"
+msgstr ""
+
+#: templates/auth/loggedin-user.php:19
+#: templates/auth/header-login-btn.php:31
+msgid "Log Out"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full Width"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Gallery"
+msgstr ""
+
+#. Template Name of the theme
+msgid "User Dashboard"
+msgstr ""
+
+#: templates/user/track-create.php:8
+msgid "You must be a registered author to post."
+msgstr ""
+
+#: templates/user/track-create.php:12
+msgid "You do not have permission to update this post"
+msgstr ""
+
+#: templates/user/track-create.php:21
+msgid "Update Track"
+msgstr ""
+
+#: templates/user/no-tracks.php:2
+msgid "You have not uploaded any track yet."
+msgstr ""
+
+#: templates/user/track-alert.php:10
+msgid ""
+"Your track will be published once approved by\n"
+"          admin."
+msgstr ""
+
+#: templates/user/track-alert.php:13
+msgid "Track Updated"
+msgstr ""
+
+#: templates/favourites/favourites-button.php:11
+msgid "Added to favourites"
+msgstr ""
+
+#: templates/favourites/favourites-button.php:12
+msgid "Removed from favourites"
+msgstr ""
+
+#: templates/favourites/favourites-button.php:13
+msgid "Ok"
+msgstr ""
+
+#: templates/favourites/favourites-none.php:14
+msgid "You have not favourited any item yet."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Tracks Genre"
+msgstr ""
+
+#: templates/template-genre.php:81
+#: templates/artist/artist-relations-count.php:21
+msgctxt "rekord"
+msgid "%s Track"
+msgid_plural "%s Tracks"
+msgstr[0] ""
+
+#: templates/blog/content-standard.php:61
+msgid "Read More"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Podcasts"
+msgstr ""
+
+#: templates/headers/header-search.php:32
+msgid "Search A Track"
+msgstr ""
+
+#: templates/headers/header-search.php:35
+msgid "Hit enter to searchOverlay or ESC to close"
+msgstr ""
+
+#: templates/event/event-loop.php:53
+msgid "Artist Performing"
+msgstr ""
+
+#: templates/event/event-loop.php:61
+msgid "View Details"
+msgstr ""
+
+#: templates/event/event-counter.php:34
+msgid "0"
+msgstr ""
+
+#: templates/event/event-counter.php:36
+msgid "Weeks"
+msgstr ""
+
+#: templates/event/event-counter.php:38
+msgid "317"
+msgstr ""
+
+#: templates/event/event-counter.php:40
+msgid "Days"
+msgstr ""
+
+#: templates/event/event-counter.php:42
+msgid "04"
+msgstr ""
+
+#: templates/event/event-counter.php:44
+msgid "Hours"
+msgstr ""
+
+#: templates/event/event-counter.php:46
+msgid "57"
+msgstr ""
+
+#: templates/event/event-counter.php:48
+msgid "Minutes"
+msgstr ""
+
+#: templates/event/event-counter.php:49
+msgid "11"
+msgstr ""
+
+#: templates/event/event-counter.php:51
+msgid "Seconds"
+msgstr ""
+
+#: templates/global/sidebar-playlist.php:17
+msgid "PlayList"
+msgstr ""
+
+#: templates/global/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: templates/global/content-none.php:18
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: templates/global/content-none.php:23
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: templates/global/content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: templates/artist/artist-relations-count.php:15
+msgctxt "rekord"
+msgid "%s Album"
+msgid_plural "%s Albums"
+msgstr[0] ""
+
+#. translators: used between list items, there is a space after the comma
+#: single.php:42
+msgid ", "
+msgstr ""
+
+#: single.php:46
+msgid "Tagged:  %1$s"
+msgstr ""
+
+#: searchform.php:12
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: single-event.php:53
+msgid "Performers"
+msgstr ""

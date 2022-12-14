@@ -1,0 +1,2656 @@
+<?php
+/**
+ *  Rekord ACF Config
+ *
+ *  @author    xvelopers
+ *  @package   rekord
+ *  @version   1.3.6
+ *  @since     1.0.0
+ */
+
+
+// Hide ACF field group menu item
+// add_filter('acf/settings/show_admin', '__return_false');
+// define( 'ACF_LITE', true );
+
+add_filter( 'upload_mimes', 'rekord_myme_types', 1, 1 );
+function rekord_myme_types( $mime_types ) {
+  $mime_types['json'] = 'application/json'; // Adding .json extension
+  return $mime_types;
+}
+
+/*
+*  rekord_get_field()
+*
+*  This function will return a custom field value for a specific field name/key + post_id.
+*  There is a 3rd parameter to turn on/off formating. This means that an image field will not use 
+*  its 'return option' to format the value but return only what was saved in the database
+*
+*  @type	function
+*  @since	3.6
+*  @date	29/01/13
+*
+*  @param	$selector (string) the field name or key
+*  @param	$post_id (mixed) the post_id of which the value is saved against
+*  @param	$format_value (boolean) whether or not to format the value as described above
+*  @return	(mixed)
+*/
+ 
+if(!function_exists('rekord_get_field')){
+	function rekord_get_field( $selector, $post_id = false, $format_value = true ) {
+		if(class_exists('ACF')) {
+			return get_field($selector,$post_id);
+		}
+		return null;
+	}
+}
+/*
+*  rekord_the_field()
+*
+*  This function is the same as echo rekord_get_field().
+*
+*  @type	function
+*  @since	1.0.3
+*  @date	29/01/13
+*
+*  @param	$selector (string) the field name or key
+*  @param	$post_id (mixed) the post_id of which the value is saved against
+*  @return	n/a
+*/
+
+if(!function_exists('rekord_the_field')){
+	function rekord_the_field( $selector, $post_id = false, $format_value = true ) {
+		
+		if(class_exists('ACF'))
+			return the_field($selector,$post_id);
+		
+		return null;
+	}
+}
+
+function rekord_icons(){
+	return array(
+		'icon-add-1' => 'icon-add-1',
+		'icon-add-2' => 'icon-add-2',
+		'icon-add-3' => 'icon-add-3',
+		'icon-add' => 'icon-add',
+		'icon-agenda' => 'icon-agenda',
+		'icon-alarm-1' => 'icon-alarm-1',
+		'icon-alarm-clock-1' => 'icon-alarm-clock-1',
+		'icon-alarm-clock' => 'icon-alarm-clock',
+		'icon-alarm' => 'icon-alarm',
+		'icon-albums' => 'icon-albums',
+		'icon-app' => 'icon-app',
+		'icon-archive-1' => 'icon-archive-1',
+		'icon-archive-2' => 'icon-archive-2',
+		'icon-archive-3' => 'icon-archive-3',
+		'icon-archive' => 'icon-archive',
+		'icon-attachment' => 'icon-attachment',
+		'icon-back' => 'icon-back',
+		'icon-battery-1' => 'icon-battery-1',
+		'icon-battery-2' => 'icon-battery-2',
+		'icon-battery-3' => 'icon-battery-3',
+		'icon-battery-4' => 'icon-battery-4',
+		'icon-battery-5' => 'icon-battery-5',
+		'icon-battery-6' => 'icon-battery-6',
+		'icon-battery-7' => 'icon-battery-7',
+		'icon-battery-8' => 'icon-battery-8',
+		'icon-battery-9' => 'icon-battery-9',
+		'icon-battery' => 'icon-battery',
+		'icon-binoculars' => 'icon-binoculars',
+		'icon-blueprint' => 'icon-blueprint',
+		'icon-bluetooth-1' => 'icon-bluetooth-1',
+		'icon-bluetooth' => 'icon-bluetooth',
+		'icon-bookmark-1' => 'icon-bookmark-1',
+		'icon-bookmark' => 'icon-bookmark',
+		'icon-briefcase' => 'icon-briefcase',
+		'icon-broken-link' => 'icon-broken-link',
+		'icon-calculator-1' => 'icon-calculator-1',
+		'icon-calculator' => 'icon-calculator',
+		'icon-calendar-1' => 'icon-calendar-1',
+		'icon-calendar-2' => 'icon-calendar-2',
+		'icon-calendar-3' => 'icon-calendar-3',
+		'icon-calendar-4' => 'icon-calendar-4',
+		'icon-calendar-5' => 'icon-calendar-5',
+		'icon-calendar-6' => 'icon-calendar-6',
+		'icon-calendar-7' => 'icon-calendar-7',
+		'icon-calendar' => 'icon-calendar',
+		'icon-checked-1' => 'icon-checked-1',
+		'icon-checked' => 'icon-checked',
+		'icon-clock-1' => 'icon-clock-1',
+		'icon-clock' => 'icon-clock',
+		'icon-close' => 'icon-close',
+		'icon-cloud-computing-1' => 'icon-cloud-computing-1',
+		'icon-cloud-computing-2' => 'icon-cloud-computing-2',
+		'icon-cloud-computing-3' => 'icon-cloud-computing-3',
+		'icon-cloud-computing-4' => 'icon-cloud-computing-4',
+		'icon-cloud-computing-5' => 'icon-cloud-computing-5',
+		'icon-cloud-computing' => 'icon-cloud-computing',
+		'icon-cloud' => 'icon-cloud',
+		'icon-command' => 'icon-command',
+		'icon-compact-disc-1' => 'icon-compact-disc-1',
+		'icon-compact-disc-2' => 'icon-compact-disc-2',
+		'icon-compact-disc' => 'icon-compact-disc',
+		'icon-compass' => 'icon-compass',
+		'icon-compose' => 'icon-compose',
+		'icon-controls-1' => 'icon-controls-1',
+		'icon-controls-2' => 'icon-controls-2',
+		'icon-controls-3' => 'icon-controls-3',
+		'icon-controls-4' => 'icon-controls-4',
+		'icon-controls-5' => 'icon-controls-5',
+		'icon-controls-6' => 'icon-controls-6',
+		'icon-controls-7' => 'icon-controls-7',
+		'icon-controls-8' => 'icon-controls-8',
+		'icon-controls-9' => 'icon-controls-9',
+		'icon-controls' => 'icon-controls',
+		'icon-database-1' => 'icon-database-1',
+		'icon-database-2' => 'icon-database-2',
+		'icon-database-3' => 'icon-database-3',
+		'icon-database' => 'icon-database',
+		'icon-diamond' => 'icon-diamond',
+		'icon-diploma' => 'icon-diploma',
+		'icon-dislike-1' => 'icon-dislike-1',
+		'icon-dislike' => 'icon-dislike',
+		'icon-divide-1' => 'icon-divide-1',
+		'icon-divide' => 'icon-divide',
+		'icon-division' => 'icon-division',
+		'icon-document' => 'icon-document',
+		'icon-download' => 'icon-download',
+		'icon-edit-1' => 'icon-edit-1',
+		'icon-edit' => 'icon-edit',
+		'icon-eject-1' => 'icon-eject-1',
+		'icon-eject' => 'icon-eject',
+		'icon-equal-1' => 'icon-equal-1',
+		'icon-equal-2' => 'icon-equal-2',
+		'icon-equal' => 'icon-equal',
+		'icon-error' => 'icon-error',
+		'icon-exit-1' => 'icon-exit-1',
+		'icon-exit-2' => 'icon-exit-2',
+		'icon-exit' => 'icon-exit',
+		'icon-eyeglasses' => 'icon-eyeglasses',
+		'icon-fast-forward-1' => 'icon-fast-forward-1',
+		'icon-fast-forward' => 'icon-fast-forward',
+		'icon-fax' => 'icon-fax',
+		'icon-file-1' => 'icon-file-1',
+		'icon-file-2' => 'icon-file-2',
+		'icon-file' => 'icon-file',
+		'icon-film' => 'icon-film',
+		'icon-fingerprint' => 'icon-fingerprint',
+		'icon-flag-1' => 'icon-flag-1',
+		'icon-flag-2' => 'icon-flag-2',
+		'icon-flag-3' => 'icon-flag-3',
+		'icon-flag-4' => 'icon-flag-4',
+		'icon-flag' => 'icon-flag',
+		'icon-focus' => 'icon-focus',
+		'icon-folder-1' => 'icon-folder-1',
+		'icon-folder-2' => 'icon-folder-2',
+		'icon-folder-3' => 'icon-folder-3',
+		'icon-folder-4' => 'icon-folder-4',
+		'icon-folder-5' => 'icon-folder-5',
+		'icon-folder-6' => 'icon-folder-6',
+		'icon-folder-7' => 'icon-folder-7',
+		'icon-folder-8' => 'icon-folder-8',
+		'icon-folder-9' => 'icon-folder-9',
+		'icon-folder-10' => 'icon-folder-10',
+		'icon-folder-11' => 'icon-folder-11',
+		'icon-folder-12' => 'icon-folder-12',
+		'icon-folder-13' => 'icon-folder-13',
+		'icon-folder-14' => 'icon-folder-14',
+		'icon-folder-15' => 'icon-folder-15',
+		'icon-folder-16' => 'icon-folder-16',
+		'icon-folder-17' => 'icon-folder-17',
+		'icon-folder-18' => 'icon-folder-18',
+		'icon-folder-19' => 'icon-folder-19',
+		'icon-folder' => 'icon-folder',
+		'icon-forbidden' => 'icon-forbidden',
+		'icon-funnel' => 'icon-funnel',
+		'icon-garbage-1' => 'icon-garbage-1',
+		'icon-garbage-2' => 'icon-garbage-2',
+		'icon-garbage' => 'icon-garbage',
+		'icon-gift' => 'icon-gift',
+		'icon-help' => 'icon-help',
+		'icon-hide' => 'icon-hide',
+		'icon-hold' => 'icon-hold',
+		'icon-home-1' => 'icon-home-1',
+		'icon-home-2' => 'icon-home-2',
+		'icon-home' => 'icon-home',
+		'icon-hourglass-1' => 'icon-hourglass-1',
+		'icon-hourglass-2' => 'icon-hourglass-2',
+		'icon-hourglass-3' => 'icon-hourglass-3',
+		'icon-hourglass' => 'icon-hourglass',
+		'icon-house' => 'icon-house',
+		'icon-id-card-1' => 'icon-id-card-1',
+		'icon-id-card-2' => 'icon-id-card-2',
+		'icon-id-card-3' => 'icon-id-card-3',
+		'icon-id-card-4' => 'icon-id-card-4',
+		'icon-id-card-5' => 'icon-id-card-5',
+		'icon-id-card' => 'icon-id-card',
+		'icon-idea' => 'icon-idea',
+		'icon-incoming' => 'icon-incoming',
+		'icon-infinity' => 'icon-infinity',
+		'icon-info' => 'icon-info',
+		'icon-internet' => 'icon-internet',
+		'icon-key' => 'icon-key',
+		'icon-lamp' => 'icon-lamp',
+		'icon-layers-1' => 'icon-layers-1',
+		'icon-layers' => 'icon-layers',
+		'icon-like-1' => 'icon-like-1',
+		'icon-like-2' => 'icon-like-2',
+		'icon-like' => 'icon-like',
+		'icon-link' => 'icon-link',
+		'icon-list-1' => 'icon-list-1',
+		'icon-list' => 'icon-list',
+		'icon-lock-1' => 'icon-lock-1',
+		'icon-lock' => 'icon-lock',
+		'icon-locked-1' => 'icon-locked-1',
+		'icon-locked-2' => 'icon-locked-2',
+		'icon-locked-3' => 'icon-locked-3',
+		'icon-locked-4' => 'icon-locked-4',
+		'icon-locked-5' => 'icon-locked-5',
+		'icon-locked-6' => 'icon-locked-6',
+		'icon-locked' => 'icon-locked',
+		'icon-login' => 'icon-login',
+		'icon-magic-wand' => 'icon-magic-wand',
+		'icon-magnet-1' => 'icon-magnet-1',
+		'icon-magnet-2' => 'icon-magnet-2',
+		'icon-magnet' => 'icon-magnet',
+		'icon-map-1' => 'icon-map-1',
+		'icon-map-2' => 'icon-map-2',
+		'icon-map-location' => 'icon-map-location',
+		'icon-map' => 'icon-map',
+		'icon-megaphone-1' => 'icon-megaphone-1',
+		'icon-megaphone' => 'icon-megaphone',
+		'icon-menu-1' => 'icon-menu-1',
+		'icon-menu-2' => 'icon-menu-2',
+		'icon-menu-3' => 'icon-menu-3',
+		'icon-menu-4' => 'icon-menu-4',
+		'icon-menu' => 'icon-menu',
+		'icon-microphone-1' => 'icon-microphone-1',
+		'icon-microphone' => 'icon-microphone',
+		'icon-minus-1' => 'icon-minus-1',
+		'icon-minus' => 'icon-minus',
+		'icon-more-1' => 'icon-more-1',
+		'icon-more-2' => 'icon-more-2',
+		'icon-more' => 'icon-more',
+		'icon-multiply-1' => 'icon-multiply-1',
+		'icon-multiply' => 'icon-multiply',
+		'icon-music-player-1' => 'icon-music-player-1',
+		'icon-music-player-2' => 'icon-music-player-2',
+		'icon-music-player-3' => 'icon-music-player-3',
+		'icon-music-player' => 'icon-music-player',
+		'icon-mute' => 'icon-mute',
+		'icon-muted' => 'icon-muted',
+		'icon-navigation-1' => 'icon-navigation-1',
+		'icon-navigation' => 'icon-navigation',
+		'icon-network' => 'icon-network',
+		'icon-newspaper' => 'icon-newspaper',
+		'icon-next' => 'icon-next',
+		'icon-note' => 'icon-note',
+		'icon-notebook-1' => 'icon-notebook-1',
+		'icon-notebook-2' => 'icon-notebook-2',
+		'icon-notebook-3' => 'icon-notebook-3',
+		'icon-notebook-4' => 'icon-notebook-4',
+		'icon-notebook-5' => 'icon-notebook-5',
+		'icon-notebook' => 'icon-notebook',
+		'icon-notepad-1' => 'icon-notepad-1',
+		'icon-notepad-2' => 'icon-notepad-2',
+		'icon-notepad' => 'icon-notepad',
+		'icon-notification' => 'icon-notification',
+		'icon-paper-plane-1' => 'icon-paper-plane-1',
+		'icon-paper-plane' => 'icon-paper-plane',
+		'icon-pause-1' => 'icon-pause-1',
+		'icon-pause' => 'icon-pause',
+		'icon-percent-1' => 'icon-percent-1',
+		'icon-percent' => 'icon-percent',
+		'icon-perspective' => 'icon-perspective',
+		'icon-photo-camera-1' => 'icon-photo-camera-1',
+		'icon-photo-camera' => 'icon-photo-camera',
+		'icon-photos' => 'icon-photos',
+		'icon-picture-1' => 'icon-picture-1',
+		'icon-picture-2' => 'icon-picture-2',
+		'icon-picture' => 'icon-picture',
+		'icon-pin' => 'icon-pin',
+		'icon-placeholder-1' => 'icon-placeholder-1',
+		'icon-placeholder-2' => 'icon-placeholder-2',
+		'icon-placeholder-3' => 'icon-placeholder-3',
+		'icon-placeholder' => 'icon-placeholder',
+		'icon-placeholders' => 'icon-placeholders',
+		'icon-play-button-1' => 'icon-play-button-1',
+		'icon-play-button' => 'icon-play-button',
+		'icon-plus' => 'icon-plus',
+		'icon-power' => 'icon-power',
+		'icon-previous' => 'icon-previous',
+		'icon-price-tag' => 'icon-price-tag',
+		'icon-print' => 'icon-print',
+		'icon-push-pin' => 'icon-push-pin',
+		'icon-radar' => 'icon-radar',
+		'icon-reading' => 'icon-reading',
+		'icon-record' => 'icon-record',
+		'icon-repeat-1' => 'icon-repeat-1',
+		'icon-repeat' => 'icon-repeat',
+		'icon-restart' => 'icon-restart',
+		'icon-resume' => 'icon-resume',
+		'icon-rewind-1' => 'icon-rewind-1',
+		'icon-rewind' => 'icon-rewind',
+		'icon-route' => 'icon-route',
+		'icon-save' => 'icon-save',
+		'icon-search-1' => 'icon-search-1',
+		'icon-search' => 'icon-search',
+		'icon-send' => 'icon-send',
+		'icon-server-1' => 'icon-server-1',
+		'icon-server-2' => 'icon-server-2',
+		'icon-server-3' => 'icon-server-3',
+		'icon-server' => 'icon-server',
+		'icon-settings-1' => 'icon-settings-1',
+		'icon-settings-2' => 'icon-settings-2',
+		'icon-settings-3' => 'icon-settings-3',
+		'icon-settings-4' => 'icon-settings-4',
+		'icon-settings-5' => 'icon-settings-5',
+		'icon-settings-6' => 'icon-settings-6',
+		'icon-settings-7' => 'icon-settings-7',
+		'icon-settings-8' => 'icon-settings-8',
+		'icon-settings-9' => 'icon-settings-9',
+		'icon-settings' => 'icon-settings',
+		'icon-share-1' => 'icon-share-1',
+		'icon-share-2' => 'icon-share-2',
+		'icon-share' => 'icon-share',
+		'icon-shuffle-1' => 'icon-shuffle-1',
+		'icon-shuffle' => 'icon-shuffle',
+		'icon-shutdown' => 'icon-shutdown',
+		'icon-sign-1' => 'icon-sign-1',
+		'icon-sign' => 'icon-sign',
+		'icon-skip' => 'icon-skip',
+		'icon-smartphone-1' => 'icon-smartphone-1',
+		'icon-smartphone-2' => 'icon-smartphone-2',
+		'icon-smartphone-3' => 'icon-smartphone-3',
+		'icon-smartphone-4' => 'icon-smartphone-4',
+		'icon-smartphone-5' => 'icon-smartphone-5',
+		'icon-smartphone-6' => 'icon-smartphone-6',
+		'icon-smartphone-7' => 'icon-smartphone-7',
+		'icon-smartphone-8' => 'icon-smartphone-8',
+		'icon-smartphone-9' => 'icon-smartphone-9',
+		'icon-smartphone-10' => 'icon-smartphone-10',
+		'icon-smartphone-11' => 'icon-smartphone-11',
+		'icon-smartphone' => 'icon-smartphone',
+		'icon-speaker-1' => 'icon-speaker-1',
+		'icon-speaker-2' => 'icon-speaker-2',
+		'icon-speaker-3' => 'icon-speaker-3',
+		'icon-speaker-4' => 'icon-speaker-4',
+		'icon-speaker-5' => 'icon-speaker-5',
+		'icon-speaker-6' => 'icon-speaker-6',
+		'icon-speaker-7' => 'icon-speaker-7',
+		'icon-speaker-8' => 'icon-speaker-8',
+		'icon-speaker' => 'icon-speaker',
+		'icon-spotlight' => 'icon-spotlight',
+		'icon-star-1' => 'icon-star-1',
+		'icon-star' => 'icon-star',
+		'icon-stop-1' => 'icon-stop-1',
+		'icon-stop' => 'icon-stop',
+		'icon-stopwatch-1' => 'icon-stopwatch-1',
+		'icon-stopwatch-2' => 'icon-stopwatch-2',
+		'icon-stopwatch-3' => 'icon-stopwatch-3',
+		'icon-stopwatch-4' => 'icon-stopwatch-4',
+		'icon-stopwatch' => 'icon-stopwatch',
+		'icon-street-1' => 'icon-street-1',
+		'icon-street' => 'icon-street',
+		'icon-substract-1' => 'icon-substract-1',
+		'icon-substract' => 'icon-substract',
+		'icon-success' => 'icon-success',
+		'icon-switch-1' => 'icon-switch-1',
+		'icon-switch-2' => 'icon-switch-2',
+		'icon-switch-3' => 'icon-switch-3',
+		'icon-switch-4' => 'icon-switch-4',
+		'icon-switch-5' => 'icon-switch-5',
+		'icon-switch-6' => 'icon-switch-6',
+		'icon-switch-7' => 'icon-switch-7',
+		'icon-switch' => 'icon-switch',
+		'icon-tabs-1' => 'icon-tabs-1',
+		'icon-tabs' => 'icon-tabs',
+		'icon-target' => 'icon-target',
+		'icon-television-1' => 'icon-television-1',
+		'icon-television' => 'icon-television',
+		'icon-time' => 'icon-time',
+		'icon-trash' => 'icon-trash',
+		'icon-umbrella' => 'icon-umbrella',
+		'icon-unlink' => 'icon-unlink',
+		'icon-unlocked-1' => 'icon-unlocked-1',
+		'icon-unlocked-2' => 'icon-unlocked-2',
+		'icon-unlocked' => 'icon-unlocked',
+		'icon-upload' => 'icon-upload',
+		'icon-user-1' => 'icon-user-1',
+		'icon-user-2' => 'icon-user-2',
+		'icon-user-3' => 'icon-user-3',
+		'icon-user-4' => 'icon-user-4',
+		'icon-user-5' => 'icon-user-5',
+		'icon-user-6' => 'icon-user-6',
+		'icon-user-7' => 'icon-user-7',
+		'icon-user' => 'icon-user',
+		'icon-users-1' => 'icon-users-1',
+		'icon-users' => 'icon-users',
+		'icon-video-camera-1' => 'icon-video-camera-1',
+		'icon-video-camera' => 'icon-video-camera',
+		'icon-video-player-1' => 'icon-video-player-1',
+		'icon-video-player-2' => 'icon-video-player-2',
+		'icon-video-player' => 'icon-video-player',
+		'icon-view-1' => 'icon-view-1',
+		'icon-view-2' => 'icon-view-2',
+		'icon-view' => 'icon-view',
+		'icon-volume-control-1' => 'icon-volume-control-1',
+		'icon-volume-control' => 'icon-volume-control',
+		'icon-warning' => 'icon-warning',
+		'icon-wifi-1' => 'icon-wifi-1',
+		'icon-wifi' => 'icon-wifi',
+		'icon-windows-1' => 'icon-windows-1',
+		'icon-windows-2' => 'icon-windows-2',
+		'icon-windows-3' => 'icon-windows-3',
+		'icon-windows-4' => 'icon-windows-4',
+		'icon-windows' => 'icon-windows',
+		'icon-wireless-internet' => 'icon-wireless-internet',
+		'icon-worldwide-1' => 'icon-worldwide-1',
+		'icon-worldwide' => 'icon-worldwide',
+		'icon-zoom-in' => 'icon-zoom-in',
+		'icon-zoom-out' => 'icon-zoom-out',
+	);
+}
+//Allow Json file
+
+if( function_exists('acf_add_local_field_group') ):
+
+	acf_add_local_field_group(array(
+		'key' => 'group_5c7b7c45ab6f2',
+		'title' => 'Album',
+		'fields' => array(
+			array(
+				'key' => 'field_5c7b88da2cc18',
+				'label' =>  __('About Album','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7b891a2cc19',
+				'label' =>  __('Short Summery','rekord'),
+				'name' => 'short_summery',
+				'type' => 'wysiwyg',
+			
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => 1,
+				'delay' => 0,
+			),
+			array(
+				'key' => 'field_5c7b8b58329e6',
+				'label' =>  __('Artist','rekord'),
+				'name' => '',
+				'type' => 'tab',
+			
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+
+			array(
+				'key' => 'field_5eced885bead7',
+				'label' =>  __('Select Artist','rekord'),
+				'name' => 'album_artists',
+				'type' => 'user',
+				'instructions' => 'Users with role artists',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'role' => array(
+					0 => 'rekord_artist',
+				),
+				'allow_null' => 1,
+				'multiple' => 1,
+				'return_format' => 'array',
+			),
+
+			array(
+				'key' => 'field_5c7b7c5289447',
+				'label' =>  __('Select Artist','rekord'),
+				'instructions' => 'Artists list from artist post type',
+				'name' => 'album_artists',
+				'type' => 'post_object',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'artist',
+				),
+				'taxonomy' => '',
+				'allow_null' => 1,
+				'multiple' => 1,
+				'return_format' => 'id',
+				'ui' => 1,
+			),
+
+			array(
+				'key' => 'field_5c7b8c7464b02',
+				'label' =>  __('Buttons','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c8b48a5b1ed3',
+				'label' =>  __('Button','rekord'),
+				'name' => 'button',
+				'type' => 'radio',
+			
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'Custom Button' => __('Custom Button','rekord'),
+					'Link To WooCommerce' => __('Link To WooCommerce','rekord'),
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => '',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5c7b8bd064b00',
+				'label' =>  __('Button Label','rekord'),
+				'name' => 'button_label',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c8b48a5b1ed3',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 'Buy Now At iTunes',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c7b8c3564b01',
+				'label' =>  __('Button URL','rekord'),
+				'name' => 'button_url',
+				'type' => 'url',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c8b48a5b1ed3',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5c7b8c8964b03',
+				'label' =>  __('Add to Cart Button','rekord'),
+				'name' => 'add_to_cart_button',
+				'type' => 'post_object',
+				'instructions' => __( 'Select Woocommerce product to link. It will replace above buy button option','rekord'),
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c8b48a5b1ed3',
+							'operator' => '==',
+							'value' => 'Link To WooCommerce',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'product',
+				),
+				'taxonomy' => '',
+				'allow_null' => 1,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'album',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c8a9c883833d',
+		'title' => 'Artist',
+		'fields' => array(
+			array(
+				'key' => 'field_5c8a9d98f1a9e',
+				'label' =>  __('Basic','rekord'),
+				'name' => '',
+				'type' => 'tab',
+
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c9094375ad97',
+				'label' =>  __('Designation','rekord'),
+				'name' => 'designation',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c8a9c9de5ee7',
+				'label' =>  __('Short Summery','rekord'),
+				'name' => 'short_summery',
+				'type' => 'wysiwyg',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'basic',
+				'media_upload' => 1,
+				'delay' => 0,
+			),
+			array(
+				'key' => 'field_5c8a9dabf1a9f',
+				'label' =>  __('Relations','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c8a9d06e5ee8',
+				'label' =>  __('Show Artist Tracks','rekord'),
+				'name' => 'show_artist_tracks',
+				'type' => 'true_false',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 1,
+				'ui' => 1,
+				'ui_on_text' => '',
+				'ui_off_text' => '',
+			),
+			array(
+				'key' => 'field_5c8a9dbdf1aa0',
+				'label' =>  __('Show Artist Albums','rekord'),
+				'name' => 'show_artist_albums',
+				'type' => 'true_false',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 1,
+				'ui' => 1,
+				'ui_on_text' => '',
+				'ui_off_text' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'artist',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c8a82235ea01',
+		'title' => 'Cover',
+		'fields' => array(
+			array(
+				'key' => 'field_5c8a8230ccc10',
+				'label' =>  __('Cover Image','rekord'),
+				'name' => 'cover',
+				'type' => 'image',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'preview_size' => 'medium',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'artist',
+				),
+			),
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'album',
+				),
+			),
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'track',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'side',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c7f89728784e',
+		'title' => 'Event',
+		'fields' => array(
+			array(
+				'key' => 'field_5c7f8b75a2d61',
+				'label' =>  __('Event Details','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7f897eb0cfe',
+				'label' =>  __('Start Date','rekord'),
+				'name' => 'start_date',
+				'type' => 'date_picker',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y',
+				'return_format' => 'F j, Y',
+				'first_day' => 1,
+			),
+			array(
+				'key' => 'field_5c7f89d6b0cff',
+				'label' =>  __('End Date','rekord'),
+				'name' => 'end_date',
+				'type' => 'date_picker',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y',
+				'return_format' => 'F j, Y',
+				'first_day' => 1,
+			),
+			array(
+				'key' => 'field_5c7f8a12b0d00',
+				'label' =>  __('Start Time','rekord'),
+				'name' => 'start_time',
+				'type' => 'time_picker',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'g:i a',
+				'return_format' => 'g:i a',
+			),
+			array(
+				'key' => 'field_5c7f8a24b0d01',
+				'label' =>  __('End Time','rekord'),
+				'name' => 'end_time',
+				'type' => 'time_picker',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'g:i a',
+				'return_format' => 'g:i a',
+			),
+			array(
+				'key' => 'field_5c7f8a31b0d02',
+				'label' =>  __('Location','rekord'),
+				'name' => 'location',
+				'type' => 'google_map',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'center_lat' => '',
+				'center_lng' => '',
+				'zoom' => '',
+				'height' => '',
+			),
+			array(
+				'key' => 'field_5c7f8c3735ecb',
+				'label' =>  __('Performer','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7f8a57b0d03',
+				'label' =>  __('Artists','rekord'),
+				'name' => 'artists',
+				'type' => 'post_object',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'artist',
+				),
+				'taxonomy' => '',
+				'allow_null' => 1,
+				'multiple' => 1,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5c7f8a86b0d04',
+				'label' =>  __('Button','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7f8ad5b0d08',
+				'label' =>  __('Button','rekord'),
+				'name' => 'button',
+				'type' => 'radio',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'Custom Button' => __('Custom Button','rekord'),
+					'Link To WooCommerce' => __('Link To WooCommerce','rekord'),
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => '',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5c7f8a9bb0d05',
+				'label' =>  __('Button Label','rekord'),
+				'name' => 'button_label',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7f8ad5b0d08',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c7f8aa6b0d06',
+				'label' =>  __('Button Url','rekord'),
+				'name' => 'button_url',
+				'type' => 'url',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7f8ad5b0d08',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5c7f8ab6b0d07',
+				'label' =>  __('Link To Woo','rekord'),
+				'name' => 'link_to_woo',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7f8ad5b0d08',
+							'operator' => '==',
+							'value' => 'Link To WooCommerce',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'event',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c81267929364',
+		'title' => 'Gallery',
+		'fields' => array(
+			array(
+				'key' => 'field_5c812680f1990',
+				'label' =>  __('Cover','rekord'),
+				'name' => 'cover',
+				'type' => 'image',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'preview_size' => 'full',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'templates/template-gallery.php',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c7814c968e1e',
+		'title' => 'Menu',
+		'fields' => array(
+			array(
+				'key' => 'field_5c7814e83c4d2',
+				'label' =>  __('Icon','rekord'),
+				'name' => 'icon',
+				'type' => 'select',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '100',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' =>rekord_icons(),
+				'default_value' => array(
+					0 => 'icon-windows',
+				),
+				'allow_null' => 1,
+				'multiple' => 0,
+				'ui' => 1,
+				'ajax' => 1,
+				'return_format' => 'value',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5ede91f805b1f',
+				'label' => 'Show Only To',
+				'name' => 'showto',
+				'type' => 'select',
+				'instructions' => 'Who can see this item',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					true => 'Logged In Users',
+					false => 'Logged Out Users',
+					'guest' => 'Guests',
+					'subscriber' => 'Subscribers',
+					'rekord_artist' => 'Artists',
+				),
+				'default_value' => false,
+				'allow_null' => 1, 
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'nav_menu_item',
+					'operator' => '==',
+					'value' => 'all',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c7ba75a31ab2',
+		'title' => 'Track',
+		'fields' => array(
+			array(
+				'key' => 'field_5c7d1ab74094a',
+				'label' =>  __('Track','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7ba83e47fe7',
+				'label' =>  __('Track','rekord'),
+				'name' => 'track',
+				'type' => 'radio',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'upload' => __('Upload Track','rekord'),
+					'url' => __('From URL','rekord'),
+					'stream' => __('Radio Stream','rekord'),
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'upload : Upload Track',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			
+			array(
+				'key' => 'field_5c7ba772ec6a7',
+				'label' =>  __('Track Upload','rekord'),
+				'name' => 'track_upload',
+				'type' => 'file',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '==',
+							'value' => 'upload',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'library' => 'all',
+				'min_size' => '',
+				'max_size' => '',
+				'mime_types' => '.mp3,.wav,.m4a',
+			),
+			array(
+				'key' => 'field_5c951a56114b1',
+				'label' =>  __('Track Wave','rekord'),
+				'name' => 'track_wave',
+				'type' => 'file',
+				'instructions' => __( 'You can use the <a href="https://github.com/bbcrd/audiowaveform">audiowaveform</a> program to generate track waves.
+	Generate wave using following command:
+	audiowaveform -i some-file.mp3 --pixels-per-second 10 -b 8 -o some-file.json','rekord'),
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '!=',
+							'value' => 'stream',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+				'library' => 'all',
+				'min_size' => '',
+				'max_size' => '',
+				'mime_types' => '.json',
+			),
+			array(
+				'key' => 'field_5c7ba91f47fe8',
+				'label' =>  __('URL','rekord'),
+				'name' => 'track_url',
+				'type' => 'url',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '!=',
+							'value' => 'upload',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5c8b97f9df75e',
+				'label' =>  __('Allow Download','rekord'),
+				'name' => 'allow_download',
+				'type' => 'true_false',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '!=',
+							'value' => 'stream',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 0,
+				'ui' => 1,
+				'ui_on_text' => '',
+				'ui_off_text' => '',
+			),
+			array(
+				'key' => 'field_5c7bf979ed52c',
+				'label' =>  __('Track Time','rekord'),
+				'name' => 'track_time',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '!=',
+							'value' => 'stream',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '5:00',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c7ba83e47fe72',
+				'label' =>  __('Stream Type','rekord'),
+				'name' => 'stream_type',
+				'type' => 'radio',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7ba83e47fe7',
+							'operator' => '==',
+							'value' => 'stream',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'shoutcast' => __('Shoutcast','rekord'),
+					'icecast' => __('Icecast','rekord'),
+					'other' => __('Other','rekord'),
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'upload : Upload Track',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5c7c0a72538d6',
+				'label' =>  __('Relations','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7bdb0b8e41d',
+				'label' =>  __('Track Artists','rekord'),
+				'name' => 'track_artists',
+				'type' => 'post_object',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'artist',
+				),
+				'taxonomy' => '',
+				'allow_null' => 0,
+				'multiple' => 1,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5c7c0a89538d7',
+				'label' =>  __('Albums','rekord'),
+				'name' => 'track_albums',
+				'type' => 'post_object',
+				'instructions' => __( 'Select the albums for this track. Please make sure you have added albums.','rekord'),
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'album',
+				),
+				'taxonomy' => '',
+				'allow_null' => 1,
+				'multiple' => 1,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5c7d158e143fa',
+				'label' =>  __('Button','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+			array(
+				'key' => 'field_5c7d184f61295',
+				'label' =>  __('Button','rekord'),
+				'name' => 'button',
+				'type' => 'radio',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'Custom Button' => __('Custom Button','rekord'),
+					'Link To WooCommerce' => __('Link To WooCommerce','rekord'),
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'Custom Button',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_5c7d1599143fb',
+				'label' =>  __('Button Label','rekord'),
+				'name' => 'button_label',
+				'type' => 'text',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7d184f61295',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 'Buy Now',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_5c7d161a143fc',
+				'label' =>  __('Button URL','rekord'),
+				'name' => 'button_url',
+				'type' => 'url',
+				
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7d184f61295',
+							'operator' => '==',
+							'value' => 'Custom Button',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5c7d1651143fd',
+				'label' =>  __('Add To Cart Button','rekord'),
+				'name' => 'add_to_cart_button',
+				'type' => 'post_object',
+				'instructions' => __( 'Link to Woocommerce product.','rekord'),
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5c7d184f61295',
+							'operator' => '==',
+							'value' => 'Link To WooCommerce',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'product',
+				),
+				'taxonomy' => '',
+				'allow_null' => 1,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5c7d158e143fax',
+				'label' =>  __('Membership','rekord'),
+				'name' => '',
+				'type' => 'tab',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'top',
+				'endpoint' => 0,
+			),
+		
+			array(
+				'key' => 'field_5edd3f569103f',
+				'label' => __('Plugin Required', 'rekord'),
+				'name' => '',
+				'type' => 'message',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => __('Pease install and activate Membership pro plugin and create membership levels to use following options','rekord'),
+				'new_lines' => 'wpautop',
+				'esc_html' => 0,
+			),
+			array(
+				'key' => 'field_5ecaecf20cf0d',
+				'label' => __('Who can play?','rekord'),
+				'name' => 'track_play_subscriptions',
+				'type' => 'select',
+				'instructions' =>  __('Select subscriptions levels who can play this track','rekord'),
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => pmpro_getAllLevelsList(),
+				'default_value' => array(
+				),
+				'allow_null' => 1,
+				'multiple' => 1,
+				'ui' => 1,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_5ecaecf20cf0dxx',
+				'label' => __('Who can download?','rekord'),
+				'name' => 'track_download_subscriptions',
+				'type' => 'select',
+				'instructions' =>  __('Select subscriptions levels who can play this track','rekord'),
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => pmpro_getAllLevelsList(),
+				'default_value' => array(
+				),
+				'allow_null' => 1,
+				'multiple' => 1,
+				'ui' => 1,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
+		
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'track',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => array(
+			0 => 'the_content',
+		),
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5c818ac513bb3',
+		'title' => 'Video',
+		'fields' => array(
+			array(
+				'key' => 'field_5c818ad3df3b7',
+				'label' =>  __('Video','rekord'),
+				'name' => 'video',
+				'type' => 'oembed',
+				
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'width' => '',
+				'height' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'video',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	//Podcast
+		acf_add_local_field_group(array(
+			'key' => 'group_5caf51ff15153',
+			'title' => 'Podcast',
+			'fields' => array(
+				// array(
+				// 	'key' => 'field_5caf521016b41x',
+				// 	'label' =>  __('Podcast','rekord'),
+				// 	'name' => 'podcast',
+				// 	'type' => 'clone',
+					
+				// 	'required' => 0,
+				// 	'conditional_logic' => 0,
+				// 	'wrapper' => array(
+				// 		'width' => '',
+				// 		'class' => '',
+				// 		'id' => '',
+				// 	),
+				// 	'clone' => array(
+				// 	//	0 => 'field_5c7ba83e47fe7x',
+				// 	//	1 => 'field_5c7ba772ec6a7x',
+				// 		// 2 => 'field_5c951a56114b1',
+				// 		// 3 => 'field_5c7ba91f47fe8',
+				// 		// 4 => 'field_5c8b97f9df75e',
+				// 		// 5 => 'field_5c7bf979ed52c',
+				// 		 6 => 'field_5c7bdb0b8e41d',
+				// 	),
+				// 	'display' => 'seamless',
+				// 	'layout' => 'block',
+				// 	'prefix_label' => 1,
+				// 	'prefix_name' => 0,
+				// ),
+				array(
+					'key' => 'field_5c7d1ab74094ax',
+					'label' =>  __('Podcast Track','rekord'),
+					'name' => '',
+					'type' => 'tab',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'placement' => 'left',
+					'endpoint' => 0,
+				),
+				array(
+					'key' => 'field_5c7ba83e47fe7x',
+					'label' =>  __('Podcast','rekord'),
+					'name' => 'track',
+					'type' => 'radio',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'choices' => array(
+						'upload' => __('Upload Podcast','rekord'),
+						'url' => __('From URL','rekord'),
+					),
+					'allow_null' => 0,
+					'other_choice' => 0,
+					'default_value' => 'upload : Upload Podcast',
+					'layout' => 'horizontal',
+					'return_format' => 'value',
+					'save_other_choice' => 0,
+				),
+				array(
+					'key' => 'field_5c7ba772ec6a7x',
+					'label' =>  __('Podcast Upload','rekord'),
+					'name' => 'track_upload',
+					'type' => 'file',
+					
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_5c7ba83e47fe7',
+								'operator' => '==',
+								'value' => 'upload',
+							),
+						),
+					),
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'library' => 'all',
+					'min_size' => '',
+					'max_size' => '',
+					'mime_types' => '.mp3,.wav,.m4a',
+				),
+				array(
+					'key' => 'field_5c951a56114b1x',
+					'label' =>  __('Podcast Wave','rekord'),
+					'name' => 'track_wave',
+					'type' => 'file',
+					'instructions' => __( 'You can use the <a href="https://github.com/bbcrd/audiowaveform">audiowaveform</a> program to generate track waves.
+		Generate wave using following command:
+		audiowaveform -i some-file.mp3 --pixels-per-second 10 -b 8 -o some-file.json','rekord'),
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'library' => 'all',
+					'min_size' => '',
+					'max_size' => '',
+					'mime_types' => '.json',
+				),
+				array(
+					'key' => 'field_5c7ba91f47fe8x',
+					'label' =>  __('URL','rekord'),
+					'name' => 'track_url',
+					'type' => 'url',
+					
+					'required' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_5c7ba83e47fe7',
+								'operator' => '==',
+								'value' => 'url',
+							),
+						),
+					),
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+				),
+				array(
+					'key' => 'field_5c8b97f9df75ex',
+					'label' =>  __('Allow Download','rekord'),
+					'name' => 'allow_download',
+					'type' => 'true_false',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 0,
+					'ui' => 1,
+					'ui_on_text' => '',
+					'ui_off_text' => '',
+				),
+				array(
+					'key' => 'field_5c7bf979ed52cx',
+					'label' =>  __('Podcast Time','rekord'),
+					'name' => 'track_time',
+					'type' => 'text',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '5:00',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_5c7c0a72538d6x',
+					'label' =>  __('Relations','rekord'),
+					'name' => '',
+					'type' => 'tab',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'placement' => 'top',
+					'endpoint' => 0,
+				),
+				array(
+					'key' => 'field_5c7bdb0b8e41dx',
+					'label' =>  __('Podcast Artists','rekord'),
+					'name' => 'track_artists',
+					'type' => 'post_object',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'post_type' => array(
+						0 => 'artist',
+					),
+					'taxonomy' => '',
+					'allow_null' => 0,
+					'multiple' => 1,
+					'return_format' => 'object',
+					'ui' => 1,
+				),
+		
+				array(
+					'key' => 'field_5caf5310cd41f',
+					'label' =>  __('Episode','rekord'),
+					'name' => 'episode',
+					'type' => 'text',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => 'Episode 1',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				
+				array(
+					'key' => 'field_5caf54c4c368f',
+					'label' =>  __('Date','rekord'),
+					'name' => 'date',
+					'type' => 'date_picker',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'display_format' => 'F j, Y',
+					'return_format' => 'F j, Y',
+					'first_day' => 1,
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'podcast',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		));
+	endif;
+
+
+	//Front end form
+
+	if( function_exists('acf_add_local_field_group') ):
+
+		//Frontend Profile Edit
+		
+acf_add_local_field_group(array(
+	'key' => 'group_5ec3cacf24576',
+	'fields' => array(
+		array(
+			'key' => 'field_5ec3cb0b87908',
+			'label' => 'Profile Cover',
+			'name' => 'profile_cover',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'preview_size' => 'large',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+		array(
+			'key' => 'field_5ec9d0808971b',
+			'label' => 'Profile Photo',
+			'name' => 'profile_photo',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'id',
+			'preview_size' => 'medium',
+			'library' => 'all',
+			'min_width' => 150,
+			'min_height' => 150,
+			'min_size' => '',
+			'max_width' => 400,
+			'max_size' => '',
+			'mime_types' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'user_form',
+				'operator' => '==',
+				'value' => 'all',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+ 
+
+
+
+		//Frontend Track
+		acf_add_local_field_group(array(
+			'key' => 'group_5cd3f58cbea4c',
+			'title' => 'Track From Front',
+			'fields' => array(
+				array(
+					'key' => 'field_title',
+					'label' =>  __('Title','rekord'),
+					'name' => 'title',
+					'type' => 'text',
+					
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_content',
+					'label' =>  __('Description / Lyrics','rekord'),
+					'name' => 'content',
+					'type' => 'textarea',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'maxlength' => '',
+					'rows' => '',
+					'new_lines' => '',
+				),
+				array(
+					'key' => 'field_5cdd67da7cf6c',
+					'label' =>  __('Select Category','rekord'),
+					'name' => 'select_category',
+					'type' => 'taxonomy',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'taxonomy' => 'track-categories',
+					'field_type' => 'multi_select',
+					'allow_null' => 0,
+					'add_term' => 0,
+					'save_terms' => 1,
+					'load_terms' => 1,
+					'return_format' => 'id',
+					'multiple' => 0,
+				),
+				array(
+					'key' => 'field_5cd42805a8088',
+					'label' =>  __('Track Upload','rekord'),
+					'name' => 'track_upload',
+					'type' => 'file',
+					
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'library' => 'all',
+					'min_size' => '',
+					'max_size' => 15,
+					'mime_types' => '.mp3,.wav',
+				),
+				array(
+					'key' => 'field_5cd42a5c4a1ea',
+					'label' =>  __('Track Time','rekord'),
+					'name' => 'track_time',
+					'type' => 'time_picker',
+					
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'display_format' => 'g:i',
+					'return_format' => 'g:i',
+				),
+				array(
+					'key' => 'field_5cd42aca4a1eb',
+					'label' =>  __('Track Thumbnail','rekord'),
+					'name' => 'thumbnail',
+					'type' => 'image',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+					'min_width' => 200,
+					'min_height' => 200,
+					'min_size' => '',
+					'max_width' => 265,
+					'max_height' => 265,
+					'max_size' => '',
+					'mime_types' => '',
+				),
+
+
+				
+				array(
+					'key' => 'field_5cdda5dc5dcde',
+					'label' =>  __('Cover Image','rekord'),
+					'name' => 'cover',
+					'type' => 'image',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'large',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => '',
+				),
+				
+			),
+			// 'location' => array(
+			// 	array(
+			// 		array(
+			// 			'param' => 'options_page',
+			// 			'operator' => '!=',
+			// 			'value' => get_theme_mod('page_track_save'),
+			// 		),
+			// 	),
+			// ),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'seamless',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		));
+
+		//Template Options:
+
+
+acf_add_local_field_group(array(
+	'key' => 'group_5ef7a24430ac4',
+	'title' => 'Options',
+	'fields' => array(
+		array(
+			'key' => 'field_5ef7a25bbc815',
+			'label' => 'Posts Per Page',
+			'name' => 'posts_number',
+			'type' => 'number',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 8,
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'min' => '',
+			'max' => '',
+			'step' => '',
+		),
+		array(
+			'key' => 'field_5ef7a484f6ad3',
+			'label' => 'Posts Order',
+			'name' => 'posts_order',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'ASC' => 'ASC',
+				'DESC' => 'DESC',
+			),
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'default_value' => '',
+			'layout' => 'vertical',
+			'return_format' => 'value',
+			'save_other_choice' => 0,
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'templates/template-albums.php',
+			),
+		),
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'templates/template-events.php',
+			),
+		),
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'templates/template-gallery.php',
+			),
+		),
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'templates/template-videos.php',
+			),
+		),
+		array(
+			array(
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'templates/template-podcasts.php',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+		//Album
+		acf_add_local_field_group(array(
+			'key' => 'group_rekord_album_fields',
+			'title' => 'Album',
+			'fields' => array(
+				array(
+					'key' => 'field_title',
+					'label' =>  __('Title','rekord'),
+					'name' => 'title',
+					'type' => 'text',
+					
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_content',
+					'label' =>  __('Description / Lyrics','rekord'),
+					'name' => 'content',
+					'type' => 'textarea',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'maxlength' => '',
+					'rows' => '',
+					'new_lines' => '',
+				),
+				array(
+					'key' => 'field_5cdd67da7cf6cc',
+					'label' =>  __('Select Category','rekord'),
+					'name' => 'select_category',
+					'type' => 'taxonomy',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'taxonomy' => 'album-categories',
+					'field_type' => 'multi_select',
+					'allow_null' => 0,
+					'add_term' => 0,
+					'save_terms' => 1,
+					'load_terms' => 1,
+					'return_format' => 'id',
+					'multiple' => 0,
+				),
+				array(
+					'key' => 'field_5c7b891a2cc199',
+					'label' =>  __('Short Summery','rekord'),
+					'name' => 'short_summery',
+					'type' => 'textarea',
+				
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'default_value' => '',
+					'tabs' => 'all',
+					'toolbar' => 'full',
+					'media_upload' => 1,
+					'delay' => 0,
+				),
+
+				array(
+					'key' => 'field_5eced885bead7',
+					'label' => 'Select Artists',
+					'name' => 'album_artists',
+					'type' => 'user',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => 'form-group',
+						'id' => '',
+					),
+					'role' => array(
+						0 => 'rekord_artist',
+					),
+					'allow_null' => 1,
+					'multiple' => 1,
+					'return_format' => 'array',
+				),
+		
+				// array(
+				// 	'key' => 'field_5c7b7c5289447',
+				// 	'label' =>  __('Select Artist','rekord'),
+				// 	'name' => 'album_artists',
+				// 	'type' => 'post_object',
+	
+				// 	'required' => 0,
+				// 	'conditional_logic' => 0,
+				// 	'wrapper' => array(
+				// 		'width' => '',
+				// 		'class' => '',
+				// 		'id' => '',
+				// 	),
+				// 	'post_type' => array(
+				// 		0 => 'artist',
+				// 	),
+				// 	'taxonomy' => '',
+				// 	'allow_null' => 1,
+				// 	'multiple' => 1,
+				// 	'return_format' => 'id',
+				// 	'ui' => 1,
+				// ),	
+				array(
+					'key' => 'field_5cd42aca4a1ebb',
+					'label' =>  __('Album Thumbnail','rekord'),
+					'name' => 'thumbnail',
+					'type' => 'image',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+					'min_width' => 200,
+					'min_height' => 200,
+					'min_size' => '',
+					'max_width' => 265,
+					'max_height' => 265,
+					'max_size' => '',
+					'mime_types' => '',
+				),
+
+
+				
+				array(
+					'key' => 'field_5cdda5dc5dcdee',
+					'label' =>  __('Cover Image','rekord'),
+					'name' => 'cover',
+					'type' => 'image',
+					
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'large',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => '',
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		));
+		endif;
+
+
+

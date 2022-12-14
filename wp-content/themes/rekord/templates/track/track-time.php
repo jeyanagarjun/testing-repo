@@ -1,0 +1,1 @@
+<?php echo !empty(rekord_get_field('track_time'))? rekord_get_field('track_time'): '---'; ?>
